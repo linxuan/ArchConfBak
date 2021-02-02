@@ -1,0 +1,5 @@
+2021/02/02-10:10:28.337 10a3 Reusing MANIFEST /home/lynn/.config/chromium/Default/IndexedDB/https_www.bilibili.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/02/02-13:55:32.978 e3c7 Level-0 table #5: started
+2021/02/02-13:55:32.993 e3c7 Level-0 table #5: 37425 bytes OK
+2021/02/02-13:55:33.009 e3c7 Delete type=0 #3
+2021/02/02-13:55:33.011 e3c7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

@@ -1,0 +1,30 @@
+[global_config]
+  borderless = True
+  tab_position = bottom
+  use_custom_url_handler = True
+  custom_url_handler = firefox
+  title_hide_sizetext = True
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 0.7
+    background_type = transparent
+    cursor_shape = ibeam
+    cursor_color = "#aaaaaa"
+    font = Source Code Pro 12
+    foreground_color = "#839496"
+    show_titlebar = False
+    scrollbar_position = hidden
+    use_system_font = False
+    copy_on_selection = True
+    background_alpha = 0.5
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
