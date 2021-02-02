@@ -75,7 +75,7 @@ font-5 =  Font Awesome 5 Free Brands:pixelsize=10;2
 ; Modules are added to one of the available blocks
 modules-left = i3
 modules-center = xwindow
-modules-right = pacman-updates filesystem alsa memory cpu xkeyboard date powermenu
+modules-right = alsa keyboard filesystem pacman-updates memory cpu date powermenu
 
 ; Position of the system tray window
 ; If empty or undefined, tray support will be disabled
@@ -145,34 +145,14 @@ label-indicator-underline = ${colors.secondary}
 [module/filesystem]
 type = internal/fs
 interval = 25
-
 mount-0 = /
-
+format = <label>
+fixed-values = true
+format-mounted = <label-mounted>
+format-underline = #FFFF00
 label-mounted =  %{F#0a81f5}%mountpoint%%{F-}: %free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
 
 [module/i3]
 type = internal/i3
@@ -400,7 +380,7 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
-bar-volume-width = 10
+bar-volume-width = 6
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55

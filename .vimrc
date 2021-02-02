@@ -21,7 +21,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'gcmt/wildfire.vim'
 Plug 'connorholyday/vim-snazzy'
+Plug 'lilydjwg/colorizer'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
+
 
 color snazzy

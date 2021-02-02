@@ -142,3 +142,15 @@
 2021/02/02-14:06:25.624 d1 Level-0 table #67: started
 2021/02/02-14:06:25.635 d1 Level-0 table #67: 17148 bytes OK
 2021/02/02-14:06:25.650 d1 Delete type=0 #64
+2021/02/02-14:48:16.242 e1 Level-0 table #69: started
+2021/02/02-14:48:16.248 e1 Level-0 table #69: 18693 bytes OK
+2021/02/02-14:48:16.255 e1 Delete type=0 #66
+2021/02/02-14:48:16.255 dd Compacting 4@0 + 1@1 files
+2021/02/02-14:48:16.271 dd Generated table #70@0: 189 keys, 242688 bytes
+2021/02/02-14:48:16.271 dd Compacted 4@0 + 1@1 files => 242688 bytes
+2021/02/02-14:48:16.275 dd compacted to: files[ 0 1 1 0 0 0 0 ]
+2021/02/02-14:48:16.276 dd Delete type=2 #63
+2021/02/02-14:48:16.276 dd Delete type=2 #61
+2021/02/02-14:48:16.276 dd Delete type=2 #67
+2021/02/02-14:48:16.276 dd Delete type=2 #69
+2021/02/02-14:48:16.276 dd Delete type=2 #65
