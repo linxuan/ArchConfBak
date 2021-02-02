@@ -1,0 +1,41 @@
+.Xauthority
+.bash_history
+.bash_logout
+.cache/
+.config/chromium/Default/Local Storage/leveldb/000068.log
+.config/chromium/Default/Local Storage/leveldb/000070.ldb
+.deepinwine/
+.elementary/
+.fehbg
+.fonts/
+.fzf.bash
+.fzf.zsh
+.fzf/
+.git-credentials
+.gitconfig
+.histfile
+.local/
+.mozilla/
+.nutstore/
+.p10k.zsh
+.pki/
+.swt/
+.thumbnails/
+.vboxclient-clipboard.pid
+.vboxclient-draganddrop.pid
+.vboxclient-seamless.pid
+.vim/autoload/colorizer.vim
+.vim/colorizer.vim
+.viminfo
+.wget-hsts
+.z
+.zcompdump
+.zcompdump-vb-5.8
+.zprofile
+.zsh_history
+.zshrc.pre-oh-my-zsh
+.zshrc.zwc
+Downloads/
+Pictures/
+WeChat Files/
+
