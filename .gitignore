@@ -38,7 +38,7 @@
 Downloads/
 Pictures/
 WeChat Files/
-config/chromium/
+/.config/chromium/
 .config/dconf/
 .config/deepin/
 .config/fcitx/
