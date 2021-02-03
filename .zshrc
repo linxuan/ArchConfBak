@@ -108,6 +108,8 @@ alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='lsd -l'
 alias cman='man -M /usr/share/man/zh_CN'
+alias lg='lazygit'
+alias ra='ranger'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

@@ -16,16 +16,33 @@
 ;
 ;==========================================================
 
-[colors]
+;[colors]
 ;background = ${xrdb:color0:#222}
-background = #bf1e1e1e
-background-alt = #bf1e1e1e
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+;background = #bf1e1e1e
+;background-alt = #bf1e1e1e
+;;foreground = ${xrdb:color7:#222}
+;foreground = #dfdfdf
+;foreground-alt = #555
+;primary = #ffb52a
+;secondary = #e60053
+;alert = #bd2c40
+;buffer = #4c566a
+;
+[colors]
+background = #2E3440                                                     
+buffer = #4c566a
+foreground = #D8DEE9
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+urgent = #BF616A
+warning = #D08770
+notify = #EBCB8B
+success = #A3BE8C
+function = #B48EAD
+
+
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -49,14 +66,14 @@ fixed-center =  false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 4
+line-size = 2
 line-color = #f00
 
 border-size = 0
 border-color = #00000000
 
-padding-left = 1
-padding-right = 5
+padding-left = 0
+padding-right = 4
 
 module-margin-left = 4
 module-margin-right = 4
@@ -75,7 +92,8 @@ font-5 =  Font Awesome 5 Free Brands:pixelsize=10;2
 ; Modules are added to one of the available blocks
 modules-left = i3
 modules-center = xwindow
-modules-right = alsa keyboard filesystem pacman-updates memory cpu date powermenu
+modules-right = alsa keyboard info-hackspeed system-usb-mount network-detail filesystem memory cpu date pacman-updates notify powermenu
+
 
 ; Position of the system tray window
 ; If empty or undefined, tray support will be disabled
@@ -125,22 +143,64 @@ cursor-scroll = ns-resize
 type = internal/xwindow
 label = %title:0:50:...%
 
-[module/xkeyboard]
+[module/battery]                                                         
+type = internal/battery
 
+full-at = 100
+battery = BAT0
+adapter = AC
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #BF616A
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = #BF616A
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = #BF616A
+
+label-full = 
+label-full-foreground = #A3BE8C
+label-full-underline = #A3BE8C
+
+[module/keyboard] 
 type = internal/xkeyboard
-blacklist-0 = num lock
+; List of indicators to ignore
+bufferlist-0 = num lock
+bufferlist-1 = scroll lock
+; Format
+format = <label-indicator>
+label-indicator-on-capslock =  CL
+label-indicator-on-capslock-foreground = #D08770
+label-indicator-on-capslock-underline = #D08770
+; Icons
+layout-icon-default = 
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+;[module/xkeyboard]
+;
+;type = internal/xkeyboard
+;blacklist-0 = num lock
+;
+;format-prefix = " "
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-underline = ${colors.secondary}
+;
+;label-layout = %layout%
+;label-layout-underline = ${colors.secondary}
+;
+;label-indicator-padding = 2
+;label-indicator-margin = 1
+;label-indicator-background = ${colors.secondary}
+;label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -177,12 +237,12 @@ wrapping-scroll = false
 ; ws-icon-[0-9]+ = <label>;<icon>
 ; NOTE: The <label> needs to match the name of the i3 workspace
 ; Neither <label> nor <icon> can contain a semicolon (;)
-ws-icon-0 = 1; 
-ws-icon-1 = 2;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
-ws-icon-default = 
+ws-icon-default = 
 
 label-mode-padding =  4
 label-mode-foreground = #000
@@ -212,26 +272,21 @@ label-urgent-padding = 4
 ; Separator in between workspaces
 ; label-separator = |
 
-
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
 icon-prev = 
 icon-stop = 
 icon-play = 
 icon-pause = 
 icon-next = 
-
 label-song-maxlen = 25
 label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
-
 format = <label> <bar>
 label = BL
-
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #fff
@@ -268,7 +323,6 @@ ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
-
 [module/memory]
 type = internal/memory
 interval = 2
@@ -277,7 +331,6 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
-
 ; Only applies if <ramp-used> is used
 ramp-used-0 = ▁
 ramp-used-1 = ▂
@@ -288,22 +341,18 @@ ramp-used-5 = ▆
 ramp-used-6 = ▇
 ramp-used-7 = █
 
-
 [module/wlan]
 type = internal/network
 interface = net1
 interval = 3.0
-
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected =  %essid%
-
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
-
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
@@ -315,43 +364,39 @@ ramp-signal-foreground = ${colors.foreground-alt}
 type = internal/network
 interface = ens4f1
 interval = 3.0
-
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
-
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+[module/info-hackspeed]
+type = custom/script
+exec = ~/.config/polybar/scripts/info-hackspeed.sh                       
+tail = true
+
 [module/date]
 type = internal/date
 interval = 5
-
-date = "%m-%d "
-date-alt = " %Y-%m-%d"
-
+date = "%b-%d %a"
+;date-alt = " %Y-%m-%d"
 time = %H:%M
-time-alt = %H:%M:%S
- 
+;time-alt = %H:%M:%S
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
-
-label =  %date%  %time%
+label =  %date%    %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
-
 label-muted =   muted
 label-muted-foreground = #666
-
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
@@ -371,79 +416,95 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/alsa]
 type = internal/alsa
+master-soundcard = ${config.master-soundcard}
+speaker-soundcard = ${config.speaker-soundcard}
+headphone-soundcard = ${config.headphone-soundcard}
+master-mixer = ${config.master-mixer}
+; Format 
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.function}
+label-muted =  muted
+label-muted-foreground = ${colors.urgent}
+label-muted-underline = ${colors.urgent}
+ramp-volume-0 = 
+ramp-volume-0-foreground = ${colors.success}
+ramp-volume-1 = 
+ramp-volume-1-foreground = ${colors.notify}
+ramp-volume-2 = 
+ramp-volume-2-foreground = ${colors.urgent}
+ramp-headphones-0 = 
+ramp-volume-foreground = ${colors.nord7}
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
+;[module/alsa]
+;type = internal/alsa
+;format-volume = <label-volume> <bar-volume>
+;label-volume = VOL
+;label-volume-foreground = ${root.foreground}
+;format-muted-prefix = " "
+;format-muted-foreground = ${colors.foreground-alt}
+;label-muted = sound muted
+;bar-volume-width = 6
+;bar-volume-foreground-0 = #55aa55
+;bar-volume-foreground-1 = #55aa55
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
+;bar-volume-gradient = false
+;bar-volume-indicator = |
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ─
+;bar-volume-fill-font = 2
+;bar-volume-empty = ─
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground-alt}
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+;[module/battery]
+;type = internal/battery
+;battery = BAT0
+;adapter = ADP1
+;full-at = 98
+;format-charging = <animation-charging> <label-charging>
+;format-charging-underline = #ffb52a
+;format-discharging = <animation-discharging> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+;format-full-prefix = " "
+;format-full-prefix-foreground = ${colors.foreground-alt}
+;format-full-underline = ${self.format-charging-underline}
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-foreground = ${colors.foreground-alt}
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-foreground = ${colors.foreground-alt}
+;animation-charging-framerate = 750
+;animation-discharging-0 = 
+;animation-discharging-1 = 
+;animation-discharging-2 = 
+;animation-discharging-foreground = ${colors.foreground-alt}
+;animation-discharging-framerate = 750
 
-bar-volume-width = 6
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
+[module/notify]
+type = custom/text
+content =  
+content-foreground = ${colors.warning}
+content-underline = ${colors.warning}
+content-padding = 1 
+click-left = xdotool key control+grave
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
-
 format = <ramp> <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
-
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
-
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
@@ -452,28 +513,94 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 expand-right = true
-format-spacing = 1
+label-open =  
+label-close =  |
+menu-0-0 =  
+menu-0-0-foreground = ${colors.urgent}
+menu-0-0-padding = 2 
+menu-0-0-exec = shutdown
+menu-0-1 =  
+menu-0-1-foreground = ${colors.warning}
+menu-0-1-padding = 2 
+menu-0-1-exec = reboot
+menu-0-2 =  
+menu-0-2-foreground = ${colors.warning}
+menu-0-2-padding = 2 
+menu-0-2-exec = logout
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+;[module/powermenu]
+;type = custom/menu
+;expand-right = true
+;format-spacing = 1
+;
+;label-open = 
+;label-open-foreground = ${colors.secondary}
+;label-close =  cancel
+;label-close-foreground = ${colors.secondary}
+;label-separator = |
+;label-separator-foreground = ${colors.foreground-alt}
+;
+;menu-0-0 = reboot
+;menu-0-0-exec = systemctl reboot
+;menu-0-1 = power off
+;menu-0-1-exec = systemctl poweroff
+;menu-1-0 = cancel
+;menu-1-0-exec = menu-open-0
 
-menu-0-0 = reboot
-menu-0-0-exec = systemctl reboot
-menu-0-1 = power off
-menu-0-1-exec = systemctl poweroff
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 4 
 
 [module/pacman-updates]
 type = custom/script
 exec = checkupdates | wc -l
 interval = 1000
-label =  Updates: %output%
+label =   %output%
 format-underline = #FFFF00
+
+[module/system-usb-mount]
+type = custom/script
+exec = /home/lynn/.config/polybar/scripts/system-usb-mount.sh
+interval = 5
+click-left = /home/lynn/.config/polybar/scripts/system-usb-mount.sh --mount &
+click-right = /home/lynn/.config/polybar/scripts/system-usb-mount.sh --unmount &
+
+[module/network-short]
+type = internal/network
+interface = ${config.interface}
+interval = 1
+format-connected = %{A1:networkmanager_dmenu:}<ramp-signal>%{A}
+format-disconnected = %{A1:networkmanager_dmenu:}<label-disconnected>%{A}
+label-disconnected = 
+label-disconnected-foreground = ${colors.urgent}
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-0-foreground = ${colors.urgent}
+ramp-signal-0-underline = ${colors.urgent}
+ramp-signal-1-foreground = ${colors.notify}
+ramp-signal-1-underline = ${colors.notify}
+ramp-signal-2-foreground = ${colors.nord7}
+ramp-signal-2-underline = ${colors.nord7}
+ramp-signal-3-foreground = ${colors.success}
+ramp-signal-3-underline = ${colors.success}
+
+[module/network-detail]
+type = internal/network
+;"ip link" command to check the interface
+interface = enp0s3
+interval = 3
+format-connected = <label-connected>
+label-connected =  %downspeed:9%   %upspeed:9%
+label-connected-foreground = ${colors.success}
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = /home/lynn/.config/polybar/scripts/updates-pacman-aurhelper.sh
+interval = 6000
 
 [settings]
 screenchange-reload = true
