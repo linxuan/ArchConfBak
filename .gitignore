@@ -38,4 +38,17 @@
 Downloads/
 Pictures/
 WeChat Files/
-
+.config/chromium
+.config/dconf
+.config/deepin
+.config/fcitx
+.config/geany
+.config/gtk-3.0
+.config/lazygit
+.config/lsd
+.config/menus
+.config/neofetch
+.config/netease-cloud-music
+.config/procps
+.config/pulse
+.config/Typora
