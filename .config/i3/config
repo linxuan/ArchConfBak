@@ -50,6 +50,7 @@ assign [class="Chromium"] $ws2
 assign [class="Terminator"] $ws1
 assign [class="Geany"] $ws3
 assign [class="netease-cloud-music"] $ws5
+assign [class="Typora"] $ws3
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
