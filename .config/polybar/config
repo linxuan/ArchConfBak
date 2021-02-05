@@ -92,7 +92,7 @@ font-5 =  Font Awesome 5 Free Brands:pixelsize=10;2
 ; Modules are added to one of the available blocks
 modules-left = i3
 modules-center = xwindow
-modules-right = alsa keyboard info-hackspeed system-usb-mount network-detail filesystem memory cpu date pacman-updates notify powermenu
+modules-right = keyboard info-hackspeed system-usb-mount network-detail filesystem memory cpu alsa pacman-updates notify date powermenu
 
 
 ; Position of the system tray window
@@ -141,7 +141,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
+label = %title:0:30:...%
 
 [module/battery]                                                         
 type = internal/battery
@@ -251,9 +251,8 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.warning}
 label-focused-padding = 4
-
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
 label-unfocused-padding = 4

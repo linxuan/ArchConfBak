@@ -63,8 +63,8 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "xz.v2ray.in",
-                        "port": 34443,
+                        "address": "cnhk7.v2ray.in",
+                        "port": 65443,
                         "users": [
                             {
                                 "alterId": 2,

@@ -110,6 +110,7 @@ alias ls='lsd -l'
 alias cman='man -M /usr/share/man/zh_CN'
 alias lg='lazygit'
 alias ra='ranger'
+alias updt='sudo pacman -Syu'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

@@ -1,0 +1,13 @@
+BODY{FONT-FAMILY: "Verdana", "ËÎÌו";FONT-SIZE: 12px;color: #565656;text-decoration: none;}
+TD{FONT-FAMILY: "Verdana", "ËÎÌו";FONT-SIZE: 12px;color: #565656;}
+INPUT{ FONT-SIZE: 12px;color: #000000;BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #cccccc; PADDING-BOTTOM: 1px; BORDER-TOP-COLOR: #cccccc; PADDING-TOP: 1px; HEIGHT: 18px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #cccccc}
+
+A{COLOR: #00000;TEXT-DECORATION: none;line-height: 160%}
+a:link       { text-decoration: none; color: #565656; font-family: verdana,arial,helvetica,sans-serif;}
+a:visited    { text-decoration: none; color: #565656; font-family: verdana,arial,helvetica,sans-serif; }
+a:hover      { text-decoration: underline; color: #333333 }
+.title{background:url(img/bottombg.jpg);}
+.title1{background:url(img/bg_title1.gif);}
+.border{border: 1px solid #565656;}
+
+
