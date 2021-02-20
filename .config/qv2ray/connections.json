@@ -1025,13 +1025,13 @@
         "creationDate": 1612318651,
         "displayName": "CNHK7 WSS (2x)",
         "importSource": 1,
-        "lastConnected": 1612409128,
+        "lastConnected": 1612491919,
         "lastUpdatedDate": 1612318651,
-        "latency": 14,
+        "latency": 18,
         "stats": [
             {
-                "downLinkData": 23951433,
-                "upLinkData": 615513
+                "downLinkData": 31841015,
+                "upLinkData": 785620
             }
         ]
     },

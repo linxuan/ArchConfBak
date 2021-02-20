@@ -512,20 +512,21 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 expand-right = true
+format-spacing = 1
 label-open =  
 label-close =  |
 menu-0-0 =  
 menu-0-0-foreground = ${colors.urgent}
 menu-0-0-padding = 2 
-menu-0-0-exec = shutdown
+menu-0-0-exec = systemctl poweroff
 menu-0-1 =  
 menu-0-1-foreground = ${colors.warning}
 menu-0-1-padding = 2 
-menu-0-1-exec = reboot
+menu-0-1-exec = systemctl reboot
 menu-0-2 =  
 menu-0-2-foreground = ${colors.warning}
 menu-0-2-padding = 2 
-menu-0-2-exec = logout
+menu-0-2-exec = exit
 
 ;[module/powermenu]
 ;type = custom/menu
